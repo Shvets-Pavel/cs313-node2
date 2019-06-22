@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Basic Math operations.</h2>
+<div id="demo">
+<p>Please, select a basic math operation (add, subtract, multiply, or divide) and two operands:</p>
+
+
+<form action="/math_service" method="get">
+Weight:
+  <input type="number" name="weight">
+  <br><br>
+  Types of mail:
+  <select name="operations">
+    <option value="add" name="add">Letters (Stamped)</option>
+    <option value="subtract" name="subtract">Letters (Metered)</option>
+    <option value="multiply" name="multiply">Large Envelopes (Flats)</option>
+    <option value="divide" name="divide">First-Class Package Service—Retail</option>
+  </select>
+  <br><br>
+  <input type="submit">
+  <button type="button" onclick="loadDoc()">Calculation result</button>
+</form>
+</div>
+
+<script>
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("demo").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET", "math_service", true);
+  xhttp.send();
+}
+</script>
+
+</body>
+</html>
