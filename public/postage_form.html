@@ -2,41 +2,30 @@
 <html>
 <body>
 
-<h2>Basic Math operations.</h2>
+<h2>Postal Rate Calculator</h2>
 <div id="demo">
-<p>Please, select a basic math operation (add, subtract, multiply, or divide) and two operands:</p>
+<p>Please, select the weight of the item and one of the types of mail:</p>
 
 
-<form action="/math_service" method="get">
-Weight:
-  <input type="number" name="weight">
+<form action="/getRate" method="get">
+<fieldset>
+<legend>Mail infromation</legend>
+Weight (oz.):
+  <input type="text" name="weight">
   <br><br>
   Types of mail:
-  <select name="operations">
-    <option value="add" name="add">Letters (Stamped)</option>
-    <option value="subtract" name="subtract">Letters (Metered)</option>
-    <option value="multiply" name="multiply">Large Envelopes (Flats)</option>
-    <option value="divide" name="divide">First-Class Package Service—Retail</option>
+  <select name="mailtype">
+  <option disabled selected>Choose mail type</option>
+    <option value="Letters (Stamped)" name="stamped">Letters (Stamped)</option>
+    <option value="Letters (Metered)" name="metered">Letters (Metered)</option>
+    <option value="Large Envelopes (Flats)" name="flats">Large Envelopes (Flats)</option>
+    <option value="First-Class Package Service—Retail" name="retail">First-Class Package Service—Retail</option>
   </select>
   <br><br>
-  <input type="submit">
-  <button type="button" onclick="loadDoc()">Calculation result</button>
+  <input type="submit" value="Calculate Postage Rate">
+  </fieldset>
 </form>
 </div>
-
-<script>
-function loadDoc() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("demo").innerHTML =
-      this.responseText;
-    }
-  };
-  xhttp.open("GET", "math_service", true);
-  xhttp.send();
-}
-</script>
 
 </body>
 </html>
